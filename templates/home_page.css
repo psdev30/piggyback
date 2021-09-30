@@ -1,0 +1,76 @@
+
+body {
+  background-image: url('backdrop.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+img.red_s{
+  position: absolute;
+  right: 0;
+  top: 40%;
+}
+img.blue_s{
+  position: absolute;
+  left: 0;
+  top: 23%;
+}
+h1.blue_s{
+  position:   absolute;
+  top:  250px;
+  left:  100px;
+  width:  200px;
+  font-size:  2em;
+  font-family:  Courier New;
+}
+h1{
+  font-family:  Courier New;
+  font-weight:  bold;
+}
+div.box{
+  border-radius: 25px;
+  width: 200px;
+  padding: 15px;
+  margin: 20px;
+  position: absolute;
+  left:  40%;
+  top: 30%;
+
+
+}
+button{
+  border-radius: 25px;
+  background-color: lightskyblue;
+  font-family: courier new;
+  font-weight: bold;
+  padding:  5%;
+  width: 96px;
+  
+
+}
+img.pin{
+  z-index: 1;
+  top: 15%;
+  left: 17%;
+  width: 150px;
+  position: absolute;
+}
+img.piggy{
+  width: 50%;
+  position: relative;
+  left: 20%;
+}
+
+img.pin2{
+  top: 57%;
+  left: 57%;
+  width: 120px;
+  position: absolute;
+}
+img.pin3{
+  z-index: 1;
+  top: 10%;
+  right: 17%;
+  width: 110px;
+  position: absolute;
+}
