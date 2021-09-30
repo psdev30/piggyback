@@ -46,44 +46,66 @@
             style="
               margin: 30px auto;
               width: 30%;
-              background-color: rgb(63, 81, 181);
-              color: rgb(255, 255, 255);
               box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%),
                 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
             "
           >
-            <p>Sign Up</p>
+            <br />
+            <h3>Sign Up</h3>
             <form>
-              <label for="name">Name:</label>
-              <input
-                class="mdl-textfield__input"
-                type="text"
-                name="name"
-                id="name"
-                required
-              />
-              <label for="email">Email:</label>
-              <input
-                class="mdl-textfield__input"
-                type="text"
-                name="email"
-                id="email"
-                required
-              />
-              <label for="password">Password:</label>
-              <input
-                class="mdl-textfield__input"
-                type="text"
-                name="password"
-                id="password"
-                required
-              />
-              <input
-                class="mdl-button"
-                style="color: white"
-                type="submit"
-                value="Submit"
-              />
+              <div
+                class="
+                  mdl-textfield mdl-js-textfield
+                  mdl-textfield--floating-label
+                "
+              >
+                <label class="mdl-textfield__label" for="name">Name:</label>
+                <input
+                  class="mdl-textfield__input"
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                />
+              </div>
+              <br />
+
+              <div
+                class="
+                  mdl-textfield mdl-js-textfield
+                  mdl-textfield--floating-label
+                "
+              >
+                <label class="mdl-textfield__label" for="email">Email:</label>
+                <input
+                  class="mdl-textfield__input"
+                  type="text"
+                  name="email"
+                  id="email"
+                  required
+                />
+              </div>
+              <br />
+
+              <div
+                class="
+                  mdl-textfield mdl-js-textfield
+                  mdl-textfield--floating-label
+                "
+              >
+                <label class="mdl-textfield__label" for="password"
+                  >Password:</label
+                >
+                <input
+                  class="mdl-textfield__input"
+                  type="text"
+                  name="password"
+                  id="password"
+                  required
+                />
+              </div>
+              <br />
+              <input class="mdl-button" type="submit" value="Submit" />
             </form>
           </div>
         </div>
