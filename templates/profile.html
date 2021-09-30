@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Profile</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Logout</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Your Profile</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Logout</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div style='text-align: center; margin-top: 5%'>
+        <h5>Create Profile</h5>
+        <!-- sticky login form with username/password fields -->
+        <form action="" method="post">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                 style="margin-right: 15px">
+                <input class="mdl-textfield__input" type="text" id="profile_name" name="profile_name">
+                <label class="mdl-textfield__label" for="profile_name">Name</label>
+            </div>
+            <br />
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                 style="margin-right: 15px;">
+                <input class="mdl-textfield__input" type="number" id="profile_age" name="profile_age">
+                <label class="mdl-textfield__label" for="profile_age">Age</label>
+            </div>
+            <br />
+            
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                 style="margin-right: 15px">
+                <input class="mdl-textfield__input" type="email" id="profile_email" name="profile_email">
+                <label class="mdl-textfield__label" for="profile_email">Contact Email</label>
+            </div>
+            <br />
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                 style="margin-right: 15px">
+                <input class="mdl-textfield__input" type="checkbox" id="profile_car" name="profile_car">
+                <label class="mdl-textfield__label" for="profile_car">Own a Car</label>
+                
+            </div>
+            <br />
+
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                    type="submit">
+                Save Profile
+            </button>
+        </form>
+    </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
