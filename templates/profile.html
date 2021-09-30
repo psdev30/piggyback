@@ -13,19 +13,33 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">Profile</span>
+      <span class="mdl-layout-title">Carpool Management System</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="">Logout</a>
+        <a class="mdl-navigation__link" href="">Home</a>
+        <a class="mdl-navigation__link" href="signUp.html"
+          >Create Account</a
+        >
+        <a class="mdl-navigation__link" href="login.html">Login</a>
+        <a class="mdl-navigation__link" href="profile.html"
+          >Edit Profile</a
+        >
       </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Your Profile</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Logout</a>
+    <span class="mdl-layout-title">Carpool Management System</span>
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <a class="mdl-navigation__link" href="">Home</a>
+      <a class="mdl-navigation__link" href="signUp.html"
+        >Create Account</a
+      >
+      <a class="mdl-navigation__link" href="login.html">Login</a>
+      <a class="mdl-navigation__link" href="profile.html"
+        >Edit Profile</a
+      >
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -39,21 +53,21 @@
                 <input class="mdl-textfield__input" type="text" id="profile_name" name="profile_name">
                 <label class="mdl-textfield__label" for="profile_name">Name</label>
             </div>
-            <br />
+            <br>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
                  style="margin-right: 15px;">
                 <input class="mdl-textfield__input" type="number" id="profile_age" name="profile_age">
                 <label class="mdl-textfield__label" for="profile_age">Age</label>
             </div>
-            <br />
+            <br>
             
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
                  style="margin-right: 15px">
                 <input class="mdl-textfield__input" type="email" id="profile_email" name="profile_email">
                 <label class="mdl-textfield__label" for="profile_email">Contact Email</label>
             </div>
-            <br />
+            <br>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
                  style="margin-right: 15px">
@@ -61,7 +75,7 @@
                 <label class="mdl-textfield__label" for="profile_car">Own a Car</label>
                 
             </div>
-            <br />
+            <br>
 
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
                     type="submit">
