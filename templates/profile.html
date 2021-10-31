@@ -40,14 +40,11 @@
     <main class="mdl-layout__content">
         <div class="page-content">
             <div style='text-align: center;'>
-                <h3 style="text-decoration: underline; text-underline-offset: 50%">Bob Johnson's Profile</h3>
+                <h3 style="text-decoration: underline; text-underline-offset: 50%">{{ name }}'s Profile</h3>
                 <ul style="list-style-type: square">
-                    <li><h5>Lives in San Francisco, CA</h5></li>
-                    <li><h5>Last PiggyBack: 12/13/2020</h5></li>
-                    <li><h5>Number of rides: 12</h5></li>
-                    <li><h5>Owns a BMW i3</h5></li>
-                    <li><h5>Most frequent travel destination: Los Angeles, CA</h5></li>
-
+					{% for key, value in profile.items() %}
+						<li><h5>{{key}} {{value}}</h5></li>
+					{% endfor %}
                     <br>
                 </ul>
                 <br>

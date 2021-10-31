@@ -5,7 +5,7 @@ from google.cloud import datastore
 
 app = Flask(__name__)
 
-SESSION_KEY = 'piggyback'
+app.secret_key = 'piggyback'
 
 
 @app.route('/')
@@ -20,7 +20,33 @@ def create_account():
 
 @app.route('/profile')
 def profile():
-    return render_template("profile.html")
+	client = datastore.Client('project-1520')
+	if verify_credentials_helper():
+		fetchProfile = client.query(kind='user')
+		fetchProfile.add_filter('username', '=', session['username'])
+		fetchProfile.add_filter('password', '=', session['password'])
+		res = list(fetchProfile.fetch())
+		if len(res) == 1:
+			name = res[0]['firstName'] + ' ' +  res[0]['lastName']
+			city = res[0]['city']
+			state = res[0]['state']
+			location = city + ', ' + state
+			num_rides = res[0]['numRides']
+			car = None
+			if res[0]['lastPiggyBack'] != '':
+				last_piggyback = res[0]['lastPiggyBack']
+			else:
+				last_piggyback = 'A new piglet!'
+
+			profile_info = {'Lives in': location, 'Number of Rides: ': num_rides, 'Last PiggyBack: ': last_piggyback}
+
+			if res[0]['ownsCar']:
+				car = res[0]['carMake'] + ' ' +  res[0]['carModel']
+				profile_info['Owns a '] = car
+			if res[0]['mostFrequentDestination'] != '':
+				profile_info['Most frequent travel destination: '] = res[0]['mostFrequentDestination']
+				
+			return render_template("profile.html", name=name, profile=profile_info)
 
 @app.route('/home_page')
 def home_page(username=None, password=None, error=None):
@@ -34,9 +60,8 @@ def validate_login():
 	verify_login_query = client.query(kind='user')
 	verify_login_query.add_filter('username', '=', username)
 	verify_login_query.add_filter('password', '=', password)
-	# return '12'
 	res = list(verify_login_query.fetch())
-	if len(res) > 0:
+	if len(res) == 1:
 		retrieved_username = res[0]['username']
 		retrieved_password = res[0]['password']
 	else:
@@ -50,6 +75,17 @@ def validate_login():
 def logout():
 	session.pop('username', None)
 	session.pop('password', None)
+
+
+def verify_credentials_helper():
+	client = datastore.Client('project-1520')
+	verify_login_query = client.query(kind='user')
+	verify_login_query.add_filter('username', '=', session['username'])
+	verify_login_query.add_filter('password', '=', session['password'])
+	res = list(verify_login_query.fetch())
+	if len(res) == 1:
+		return True
+	return False
 	
 
 
