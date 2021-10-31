@@ -13,9 +13,41 @@ def root(error=None):
 	return render_template("login.html", invalid_credentials=error)
 
 
-@app.route('/create_account')
+@app.route('/create_account_page')
+def create_account_page(error=None):
+    return render_template('create_account.html', error=error)
+
+@app.route('/create_account', methods=['POST'])
 def create_account():
-    return render_template("create_account.html")
+	client = datastore.Client()
+	try:
+		account_key = client.key('user')
+		user_entity = datastore.Entity(account_key)
+		user_entity['firstName'] = flask.request.values['name'].split(' ')[0]
+		user_entity['lastName'] = flask.request.values['name'].split(' ')[1]
+		user_entity['phone'] = flask.request.values['phone']
+		user_entity['email'] = flask.request.values['email']
+		user_entity['username'] = flask.request.values['username']
+		user_entity['password'] = flask.request.values['password']
+		user_entity['street'] = flask.request.values['street']
+		user_entity['city'] = flask.request.values['city']
+		user_entity['state'] = flask.request.values['state']
+		user_entity['zip'] = flask.request.values['zip']
+		user_entity['ownsCar'] = flask.request.values['car']
+		if flask.request.values['car_make'] and flask.request.values['car_model']:
+			user_entity['carMake'] = flask.request.values['car_make']
+			user_entity['carModel'] = flask.request.values['car_model']
+	except:
+			return create_account_page('Oops, your input was invalid. Try again!')
+
+	try:
+		client.put(user_entity)
+	except:
+		return create_account_page('Oops, something went wrong on our end! Try creating an account another time')
+	
+	session['username'] = flask.request.values['username']
+	session['password'] = flask.request.values['password']
+	return home_page()
 
 
 @app.route('/profile')
@@ -45,12 +77,18 @@ def profile():
 				profile_info['Owns a '] = car
 			if res[0]['mostFrequentDestination'] != '':
 				profile_info['Most frequent travel destination: '] = res[0]['mostFrequentDestination']
-				
+
 			return render_template("profile.html", name=name, profile=profile_info)
+	else:
+		return root(True)
 
 @app.route('/home_page')
-def home_page(username=None, password=None, error=None):
-	return render_template("home_page.html", uname=username, pname=password)
+def home_page(error=None):
+	if verify_credentials_helper:
+		return render_template('home_page.html')
+	else:
+		return render_template('error.html', error='Oops, you aren\'t logged in!')
+
 
 @app.route('/validate_login', methods=['POST'])
 def validate_login():
@@ -69,12 +107,13 @@ def validate_login():
 	if retrieved_username == username and retrieved_password == password:
 		session['username'] = username
 		session['password'] = password
-		return home_page(username, password)
+		return home_page()
 
 @app.route('/logout')
 def logout():
 	session.pop('username', None)
 	session.pop('password', None)
+	return root()
 
 
 def verify_credentials_helper():
